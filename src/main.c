@@ -15,5 +15,11 @@ int main(){
 
 	printf("recPacket devuelve %d\n", result);
 
+	char msgA[11] = {0x55, 't', '0','0','0','0','0','0','0','0',0x0F};
+
+	result = recPacket(msgA);
+	printf("recPacket devuelve %d\n", result);
+
+
 	return 0;
 }

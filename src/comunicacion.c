@@ -10,6 +10,10 @@ int recPacket(char msg[]) {
 		printf("Paquete Erroneo");
 		return 0;
 	}
+	if(checkNode(msg[0]) == false){
+		printf("No es para mi, pero es valido");
+		return 20;
+	}
 	return devolver;
 }
 
