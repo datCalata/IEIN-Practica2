@@ -15,25 +15,25 @@ int recPacket(char msg[]) {
 
 boolean integridadPaquete(char msg[], int *devolver) {
 	//Probamos a calcular la longitud del array
-	int longArray = longitudArray(msg, devolver);
-	if (longArray != -1)
-		return true;
+	int longArray = longitudArray(msg);
+	if (longArray != -1){
+		//Comprovamos que la info en cmd tenga sentido
+		*devolver = checkCmd(msg[1]);
+		if (*devolver != -1)
+			return true;
+	}
 	return false;
 }
 
-int longitudArray(char msg[], int *devolver) {
+int longitudArray(char msg[]) {
 	int l = 0;
 	while (1) {
 		if (msg[l] == 0x0F && l >= 3 && l <= 14) {
 			printf("Paquete Bueno, con final y longitud aceptable( %d )", l+1);
-			//Comprovamos que la info en cmd tenga sentido
-			*devolver = checkCmd(msg[1]);
-			if (*devolver == -1)
-				return -1;
 			return l;
 		}
 		if (msg[l] == 0x0F && l < 3) {
-			printf("Paquete Erroneo, demasiado corto para ser bueno (&d) ",l+1);
+			printf("Paquete Erroneo, demasiado corto para ser bueno");
 			return -1;
 		}
 		if (l >= 14){

@@ -1,8 +1,10 @@
 #include "comunicacion.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 int main(){
 	char a[5] = {0x45,'l','a',0x0F};
+
 	printf("%d \n",recPacket(a));
 
 	int result;
