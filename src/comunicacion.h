@@ -12,9 +12,9 @@ typedef enum{true, false} boolean;
 
 
 int recPacket(char msg[]);
-boolean integridadPaquete(char msg[]);
+boolean integridadPaquete(char msg[],int *devolver);
 boolean checkNode(char nodeMessage);
 int checkCmd(char cmd);
-int longitudArray(char msg[]);
+int longitudArray(char msg[],int *devolver);
 
 #endif /* COMUNICACION_H_ */
